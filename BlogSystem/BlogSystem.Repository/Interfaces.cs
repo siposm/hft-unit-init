@@ -17,4 +17,9 @@ namespace BlogSystem.Repository
     {
         void ChangeTitle(int id, string newTitle);
     }
+
+    public interface ICommentRepository : IRepository<Comment>
+    {
+        void UpdateContent(int id, string newContent);
+    }
 }

@@ -74,7 +74,8 @@ namespace BlogSystem.Data
 
             modelBuilder.Entity<Comment>(entity =>
             {
-                entity.HasOne(comment => comment.Blog)
+                entity
+                    .HasOne(comment => comment.Blog)
                     .WithMany(blog => blog.Comments)
                     .HasForeignKey(comment => comment.BlogId)
                     .OnDelete(DeleteBehavior.ClientSetNull);

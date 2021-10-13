@@ -23,5 +23,10 @@ namespace BlogSystem.Data
 
         [ForeignKey(nameof(Blog))]
         public int BlogId { get; set; }
+
+        public override string ToString()
+        {
+            return $"{this.CommentId} - {this.Content}";
+        }
     }
 }

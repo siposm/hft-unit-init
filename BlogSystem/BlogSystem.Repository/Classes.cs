@@ -41,4 +41,21 @@ namespace BlogSystem.Repository
             return GetAll().SingleOrDefault(x => x.BlogId == id);
         }
     }
+
+    public class CommentRepository : Repository<Comment>, ICommentRepository
+    {
+        public CommentRepository(DbContext ctx) : base(ctx) { }
+
+        public override Comment GetOne(int id)
+        {
+            return GetAll().SingleOrDefault(x => x.CommentId == id);
+        }
+
+        public void UpdateContent(int id, string newContent)
+        {
+            var comment = GetOne(id);
+            comment.Content = newContent;
+            ctx.SaveChanges();
+        }
+    }
 }
